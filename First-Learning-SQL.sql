@@ -59,12 +59,16 @@ SELECT DISTINCT PP.FirstName as 'Primeiro nome', PP.MiddleName as 'Nome do meio'
 FROM Person.Person as PP INNER JOIN Person.Address as PA ON PP.BusinessEntityID = PA.AddressID
 WHERE  (PP.FirstName IS NOT NULL) AND (PP.MiddleName IS NOT NULL) AND (PP.LastName IS NOT NULL) ORDER BY PP.FirstName
 
--- Return value in order Ascendent and using metho INNER JOIN
+-- Return value in order Ascendent and using method INNER JOIN
 SELECT PP.FirstName as 'Primeiro nome', PA.AddressLine1 as 'Endereço principal', PA.StateProvinceID as 'Identificador da província'
 FROM Person.Address as PA INNER JOIN Person.Person as PP ON PA.AddressID = PP.BusinessEntityID
 WHERE (PA.StateProvinceID IS NOT NULL) AND (PA.AddressLine2 IS NOT NULL) ORDER BY PA.StateProvinceID ASC
 
-
+--Return value in order Descendent and using method INNER JOIN
+SELECT PP.PersonType as 'Apresentação', PP.FirstName as 'Primeiro nome', PEAD.EmailAddress as 'Email' 
+FROM Person.Person as PP INNER JOIN Person.EmailAddress as PEAD ON PP.BusinessEntityID = PEAD.BusinessEntityID
+WHERE (PP.MiddleName IS NOT NULL) AND (PEAD.EmailAddress IS NOT NULL)
+ORDER BY PP.FirstName ASC
 
 
 
