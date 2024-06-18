@@ -68,12 +68,27 @@ WHERE (PA.StateProvinceID IS NOT NULL) AND (PA.AddressLine2 IS NOT NULL) ORDER B
 SELECT PP.PersonType as 'Apresentação', PP.FirstName as 'Primeiro nome', PEAD.EmailAddress as 'Email' 
 FROM Person.Person as PP INNER JOIN Person.EmailAddress as PEAD ON PP.BusinessEntityID = PEAD.BusinessEntityID
 WHERE (PP.MiddleName IS NOT NULL) AND (PEAD.EmailAddress IS NOT NULL)
-ORDER BY PP.FirstName ASC
+ORDER BY PP.FirstName DESC
 
+-- =========================== Manipulation with others tables ===========================
 
+-- Return all data of table
+SELECT *
+FROM Sales.SalesPerson as SSP
 
+-- Update only column with based value ID 
+UPDATE Sales.SalesPerson
+SET Bonus = 1000
+WHERE BusinessEntityID = 274
 
+-- Update only column ComissionPct based in value of column BusinessEntityID
+UPDATE Sales.SalesPerson
+SET CommissionPct = 0.015
+WHERE BusinessEntityID = 274
 
+-- Using function TOP for return values based in parameter
+SELECT TOP 15 ProductID
+FROM Production.Product as PP
 
 
 
