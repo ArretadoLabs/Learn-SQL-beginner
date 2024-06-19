@@ -90,6 +90,18 @@ WHERE BusinessEntityID = 274
 SELECT TOP 15 ProductID
 FROM Production.Product as PP
 
+-- Using function COUNT for calculate amount values in column
+SELECT COUNT (PAT.Name) as 'Quantidade de nomes na coluna'
+FROM Person.AddressType as PAT
+
+-- Using method SUM for calculate a sum of all values of column
+SELECT SUM(ssod.UnitPrice) as 'Soma total do preço unitário de cada produto'
+FROM Sales.SalesOrderDetail as ssod
+
+-- Using signal of different in structure condition return values
+SELECT pco.Name
+FROM Person.CountryRegion as pco
+WHERE pco.Name <> 'Brazil' AND pco.Name <> 'Albania' AND pco.Name = 'Argentina'
 
 
 
