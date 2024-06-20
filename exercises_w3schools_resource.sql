@@ -43,10 +43,12 @@ SELECT sso.SalesOrderID as 'Sales order ID', sso.SalesPersonID as 'ID sales Pers
 FROM Sales.SalesOrderHeader as sso
 ORDER BY sso.SubTotal DESC
 
+--6. From the following table write a query in SQL to create a list of unique jobtitles in the employee table in Adventureworks database. 
+--Return jobtitle column and arranged the resultset in ascending order. 
 
-
-
-
+SELECT hre.JobTitle as 'Job of people'
+FROM HumanResources.Employee as hre
+GROUP BY hre.JobTitle 
 
 
 
