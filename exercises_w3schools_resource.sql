@@ -86,15 +86,23 @@ SELECT SUM(ppi.Quantity) as 'total quantity'
 FROM Production.ProductInventory as ppi
 GROUP BY ppi.LocationID * 10
 
+--11. From the following tables write a query in SQL to find the persons whose last name starts with letter 'L'. 
+--Return BusinessEntityID, FirstName, LastName, and PhoneNumber. Sort the result on lastname and firstname. 
+
+SELECT pph.BusinessEntityID as 'Business Entity ID', pp.FirstName as 'First Name', pp.LastName as 'Last Name', pph.PhoneNumber as 'Person phone'
+FROM Person.PersonPhone as pph INNER JOIN Person.Person as pp ON pph.BusinessEntityID = pp.BusinessEntityID
+WHERE pp.LastName LIKE 'L%'
+ORDER BY pp.LastName, pp.FirstName
 
 
+--12. From the following table write a query in SQL to find the sum of subtotal column. 
+--Group the sum on distinct salespersonid and customerid. Rolls up the results into subtotal and running total. 
+--Return salespersonid, customerid and sum of subtotal column i.e. sum_subtotal. 
 
-
-
-
-
-
-
+SELECT sso.SalesPersonID as 'Sales Person ID', sso.CustomerID as 'Customer ID', SUM(sso.SubTotal) as 'Subtotal'
+FROM Sales.SalesOrderHeader as sso
+WHERE sso.SalesPersonID IS NOT NULL
+GROUP BY ROLLUP(sso.SalesPersonID, sso.CustomerID)
 
 
 
