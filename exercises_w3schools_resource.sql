@@ -50,9 +50,13 @@ SELECT hre.JobTitle as 'Job of people'
 FROM HumanResources.Employee as hre
 GROUP BY hre.JobTitle 
 
+--7. From the following table write a query in SQL to calculate the total freight paid by each customer. 
+--Return customerid and total freight. Sort the output in ascending order on customerid. 
 
-
-
+SELECT sso.CustomerID as 'ID Customer', SUM(sso.Freight) as 'total_freight'
+FROM Sales.SalesOrderHeader as sso
+GROUP BY sso.CustomerID
+ORDER BY sso.CustomerID ASC
 
 
 
