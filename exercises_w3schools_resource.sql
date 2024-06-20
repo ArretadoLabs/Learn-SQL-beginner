@@ -58,5 +58,74 @@ FROM Sales.SalesOrderHeader as sso
 GROUP BY sso.CustomerID
 ORDER BY sso.CustomerID ASC
 
+--8. From the following table write a query in SQL to find the average and the sum of the subtotal for every customer. Return customerid, average and sum of the subtotal. 
+--Grouped the result on customerid and salespersonid. Sort the result on customerid column in descending order. 
+
+SELECT sso.CustomerID as 'Customer ID', sso.SalesPersonID as 'Sales Person ID', AVG(sso.SubTotal) as 'Value of Average sub total', SUM (sso.SubTotal) as 'Value of subtotal'
+FROM Sales.SalesOrderHeader as sso
+GROUP BY sso.CustomerID, sso.SalesPersonID
+ORDER BY sso.CustomerID DESC
+
+--9. From the following table write a query in SQL to retrieve total quantity of each productid which are in shelf of 'A' or 'C' or 'H'. 
+--Filter the results for sum quantity is more than 500. Return productid and sum of the quantity. 
+--Sort the results according to the productid in ascending order.
+
+SELECT *
+FROM Production.ProductInventory
+
+SELECT ppi.ProductID as 'Product ID', SUM(ppi.Quantity) as 'Quantity Product' 
+FROM Production.ProductInventory as ppi
+WHERE ppi.Shelf IN ('A','C','H')
+GROUP BY ppi.ProductID
+HAVING SUM(ppi.Quantity) > 500
+ORDER BY ppi.ProductID
+
+--10. From the following table write a query in SQL to find the total quentity for a group of locationid multiplied by 10. 
+
+SELECT SUM(ppi.Quantity) as 'total quantity'
+FROM Production.ProductInventory as ppi
+GROUP BY ppi.LocationID * 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
