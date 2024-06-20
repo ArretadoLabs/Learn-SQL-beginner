@@ -18,8 +18,13 @@ ORDER BY pp.LastName ASC
 
 -- ====================================================================================================
 
+-- 3. From the following table write a query in SQL to return all rows and a subset of the columns (FirstName, LastName, businessentityid) 
+-- from the person table in the AdventureWorks database. 
+-- The third column heading is renamed to Employee_id. Arranged the output in ascending order by lastname. 
 
-
+SELECT pp.FirstName as 'First Name', pp.LastName as 'Last Name', pp.BusinessEntityID as 'Employee ID'
+FROM Person.Person as pp
+ORDER BY pp.LastName ASC
 
 
 
