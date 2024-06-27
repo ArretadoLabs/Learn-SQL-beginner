@@ -105,15 +105,20 @@ WHERE sso.SalesPersonID IS NOT NULL
 GROUP BY ROLLUP(sso.SalesPersonID, sso.CustomerID)
 
 
+--13. From the following tables write a query in SQL to make a list of contacts who are designated as 'Purchasing Manager'. 
+--Return BusinessEntityID, LastName, and FirstName columns. Sort the result set in ascending order of LastName, and FirstName.  
+
+SELECT pbec.BusinessEntityID as 'ID Business entity', pp.LastName as 'Last Name', pp.FirstName as 'First Name'
+FROM Person.BusinessEntityContact as pbec INNER JOIN Person.ContactType as pct ON pbec.ContactTypeID = pct.ContactTypeID
+     INNER JOIN Person.Person as pp ON pp.BusinessEntityID = pbec.BusinessEntityID
+WHERE pct.Name = 'Purchasing Manager'
+
+--14. From the following tables write a query in SQL to retrieve the salesperson for each PostalCode who belongs to a territory and SalesYTD is not zero. 
+--Return row numbers of each group of PostalCode, last name, salesytd, postalcode column. 
+--Sort the salesytd of each postalcode group in descending order. Shorts the postalcode in ascending order. 
 
 
-
-
-
-
-
-
-
+-- In development.... 27/06/2024 
 
 
 
